@@ -110,22 +110,22 @@ export default function Dashboard()
             <div className="events_menu" style={{display:ready?'flex':'none'}}>
                 <div className="event_nav">
                     <label onClick={()=>event_input!=='All'?set_event_input('All'):''}
-                    style={{backgroundColor:event_input==='All'?"white":"#ff008e",color:event_input==='All'?"#ff008e":"white"}}>All Events</label>
+                    style={{ borderRadius:'10px 0px 0px 10px',backgroundColor:event_input==='All'?"white":"#ff008e",color:event_input==='All'?"#ff008e":"white"}}>All Events</label>
                     <label onClick={()=>event_input!=='My'?set_event_input('My'):''}
-                    style={{backgroundColor:event_input==='My'?"white":"#ff008e",color:event_input==='My'?"#ff008e":"white"}}>My Events({your_events})</label>
+                    style={{borderRadius:'0px 10px 10px 0px',backgroundColor:event_input==='My'?"white":"#ff008e",color:event_input==='My'?"#ff008e":"white"}}>My Events({your_events})</label>
                 </div>
                 <browse_label>{event_input==='All'?'Browse Events':'My Registered Events'}</browse_label>
                 <reg_label>{event_input==='All' ?'Register for gaming, electronics, and coding competitions':'Track and manage your event registrations'}</reg_label>
             </div>
             <div className="categories" style={{display:event_input==='All' && ready?'flex':'none'}}>
                 <label onClick={()=>event_category!=='All Events'?set_event_category('All Events'):''}
-                style={{color:event_category==='All Events'?'black':'white',backgroundColor:event_category==='All Events'?'white':'black'}}>All Events</label>
+                style={{ borderRadius:'10px 0px 0px 10px',color:event_category==='All Events'?'black':'white',backgroundColor:event_category==='All Events'?'white':'black'}}>All Events</label>
                 <label onClick={()=>event_category!=='gaming'?set_event_category('gaming'):''}
                 style={{color:event_category==='gaming'?'black':'white',backgroundColor:event_category==='gaming'?'white':'black'}}>Gaming</label>
                 <label onClick={()=>event_category!=='electronics'?set_event_category('electronics'):''}
                 style={{color:event_category==='electronics'?'black':'white',backgroundColor:event_category==='electronics'?'white':'black'}}>Electronics</label>
                 <label onClick={()=>event_category!=='coding'?set_event_category('coding'):''}
-                style={{color:event_category==='coding'?'black':'white',backgroundColor:event_category==='coding'?'white':'black'}}>Coding</label>
+                style={{borderRadius:'0px 10px 10px 0px',color:event_category==='coding'?'black':'white',backgroundColor:event_category==='coding'?'white':'black'}}>Coding</label>
             </div>
             {filtered_events.map((value,index)=> 
             index<parseInt(filtered_events.length/2)+(filtered_events.length%2===0?0:1)?
