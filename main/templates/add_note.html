@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Record</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        font-family: 'Inter';
+        background:linear-gradient(90deg, mediumpurple 0%, rebeccapurple 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100dvh;
+        margin: 0;
+    }
+    form{
+        background-color: white;
+        border-radius: 10px;
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
+        gap: 10px;
+    }
+    form label{
+        color: rebeccapurple;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    form input{
+        border: 1px solid rebeccapurple;
+        border-radius: 5px;
+        font-size: 16px;
+        padding: 5px;
+    }
+</style>
+<body>
+    <form method="POST">
+        {% csrf_token %}
+        <label>Name</label>
+        <input type="text" value="{{name|default:''}}" name="name" required maxlength="15" placeholder="Enter name">
+        <label>Age</label>
+        <input type="number" value="{{age|default:''}}" name="age" required max="25" min="20" placeholder="Enter age">
+        <label>CGPA</label>
+        <input type="text" value="{{cgpa|default:''}}" name="cgpa" required maxlength="4" placeholder="Enter cgpa">
+        <input type="hidden" name="id" value="{{id}}"></input>
+        <button type="submit" style="background-color: rebeccapurple;color: white;font-size: 16px;padding: 5px;border: 1px solid rebeccapurple;border-radius: 5px;font-weight: bold;cursor: pointer;">Add Record</button>
+        <button onclick="window.location.href='/';" type="button" style="background-color: white;color: rebeccapurple;font-size: 16px;padding: 5px;border: 1px solid rebeccapurple;border-radius: 5px;font-weight: bold;cursor: pointer;">Cancel</button>
+    </form>
+    <script>
+        document.querySelectorAll('form input')[1].addEventListener('input',(e)=>
+        {
+            e.target.value=e.target.value.replace(/[^a-zA-Z_]/g,'');
+        })
+        document.querySelectorAll('form input')[2].addEventListener('input',(e)=>
+        {
+            e.target.value=e.target.value.replace(/[^0-9]/g,'');
+        })
+        document.querySelectorAll('form input')[3].addEventListener('input',(e)=>
+        {
+            e.target.value=e.target.value.replace(/[^0-9.]/g,'');
+            if(parseFloat(e.target.value)>4.0)
+            {
+                e.target.value=e.target.value.slice(0,e.target.value.length-1);
+            }
+        })
+    </script>
+</body>
+</html>
+    
